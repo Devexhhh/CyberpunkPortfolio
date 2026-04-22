@@ -4,18 +4,35 @@
 
 @layer base {
   :root {
-    --bg: #080808;
-    --panel: #0d0d0d;
-    --border: #1c1c1c;
-    --border-bright: #2a2a2a;
-    --green: #3dff7a;
-    --green-dim: #1a7a3a;
-    --green-glow: rgba(61, 255, 122, 0.12);
-    --red-scan: #d44;
-    --text-primary: #e0e0e0;
-    --text-secondary: #888;
-    --text-dim: #444;
-  }
+  /* === CORE BACKGROUND (ULTRA BLACK) === */
+  --bg: #0a0a0a;        /* page */
+  --bg-card: #0d0d0d;   /* cards */
+  --bg-nav: #0f0f0f;    /* nav / header */
+  --panel: #0c0c0c;     /* left panel */
+  --left-bar: #121212;  /* subtle separation */
+
+  /* === BORDERS (very subtle) === */
+  --border: #1f1f1f;
+  --border-bright: #2a2a2a;
+
+  /* === TEXT === */
+  --text-primary: #e6e6e6;
+  --text-secondary: #a1a1a1;
+  --text-dim: #525252;
+  --text-muted: #525252;
+
+  /* === ACCENT (your red) === */
+  --green: #ff4d4d;
+  --green-dim: #7a1a1a;
+  --green-glow: rgba(255, 77, 77, 0.12);
+
+  /* === UI ELEMENTS === */
+  --tag-bg: #121212;
+  --tag-border: #262626;
+
+  /* === EFFECTS === */
+  --red-scan: #ff3b3b;
+}
 
   body {
     background-color: var(--bg);
@@ -132,6 +149,34 @@
   .animate-fadeUp {
     animation: fadeUp 0.5s ease both;
   }
+  
+  /* --- CUSTOM THEMED SCROLLBAR --- */
+  .cyber-scroll {
+    /* For Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-bright) transparent;
+  }
+  
+  .cyber-scroll::-webkit-scrollbar {
+    height: 4px; /* Controls horizontal scrollbar thickness */
+    width: 4px;  /* Controls vertical scrollbar thickness */
+  }
+
+  .cyber-scroll::-webkit-scrollbar-track {
+    background: var(--bg-card); /* Blends with the container */
+    border-radius: 2px;
+  }
+
+  .cyber-scroll::-webkit-scrollbar-thumb {
+    background: var(--border-bright); 
+    border-radius: 2px;
+  }
+
+  /* Changes to your red accent color when dragging/touching */
+  .cyber-scroll::-webkit-scrollbar-thumb:hover,
+  .cyber-scroll::-webkit-scrollbar-thumb:active {
+    background: var(--green); 
+  }
 }
 
 @keyframes scanline {
@@ -152,22 +197,6 @@
   /* Wire up the CSS variables injected by Next.js font system */
   --font-mono:  var(--font-geist-mono), ui-monospace, monospace;
   --font-pixel: var(--font-geist-pixel-square), ui-monospace, monospace;
-}
-
-/* ── Design tokens ─────────────────────────────────── */
-:root {
-  --bg:           #0c0c0c;
-  --bg-card:      #111111;
-  --bg-nav:       #181818;
-  --border:       #242424;
-  --border-bright:#333333;
-  --text:         #dcdcdc;
-  --text-dim:     #888888;
-  --text-muted:   #4a4a4a;
-  --tag-bg:       #161616;
-  --tag-border:   #2a2a2a;
-  --green:        #57c457;
-  --left-bar:     #1e1e1e;
 }
 
 /* ── Reset ─────────────────────────────────────────── */
@@ -218,7 +247,7 @@ body::before {
   border-radius: 1.5px;
   flex-shrink: 0;
   transition: opacity 0.1s;
-  cursor: default;
+  /* cursor: default; */
 }
 .contrib-cell:hover { opacity: 0.75; }
 
@@ -270,7 +299,7 @@ body::before {
   gap: 7px;
   background: #111;
   border: 1px solid var(--border);
-  border-radius: 7px;
+  border-radius: 1px;
   padding: 7px 15px;
   font-size: 12px;
   color: #aaa;
@@ -312,4 +341,41 @@ body::before {
   color: #555;
   margin-bottom: 48px;
   letter-spacing: 0.02em;
+}
+
+/* ── Custom Cyberpunk Cursors (Nuclear Override) ─────────────────────── */
+
+/* 1. Global Default Sharp Pointer */
+:root, body, html {
+  cursor: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 2 L9 20 L12 12 L20 9 Z' fill='%23110d0d' stroke='%23e63e3e' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 2 2, auto !important;
+}
+
+/* 2. Crosshair for interactive elements AND all their children */
+a, a *, 
+button, button *, 
+[role="button"], [role="button"] *, 
+.social-btn, .social-btn *, 
+.project-card, .project-card *, 
+.contrib-cell, .contrib-cell *,
+.cursor-pointer, .cursor-pointer * {
+  cursor: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='12' r='5' fill='none' stroke='%23e63e3e' stroke-width='1.5'/%3E%3Cpath d='M12 2v4m0 12v4M2 12h4m12 0h4' stroke='%23e63e3e' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='12' cy='12' r='1.5' fill='%23e63e3e'/%3E%3C/svg%3E") 12 12, pointer !important;
+}
+
+/* 3. Text-selection cursor for standalone text (so it remains usable) */
+p, h1, h2, h3, h4, input, textarea, .hack-place {
+  cursor: text !important;
+}
+
+/* Make sure text INSIDE cards/buttons stays as the crosshair, not the text cursor */
+.project-card p, .project-card h3, .project-card span,
+button p, button span, a span {
+  cursor: inherit !important; 
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
