@@ -3,9 +3,10 @@
 import React from "react";
 import StatusBar from "@/components/StatusBar";
 import VerticalGrid from "@/components/VerticalGrid";
+import { experiences } from "@/utils/data";
 
 // Helper function retained but styled with darker, lower-opacity backgrounds to match the theme
-const getTechStyle = (tech) => {
+const getTechStyle = (tech: string) => {
     const t = tech.toLowerCase();
     if (t.includes("react") || t.includes("next"))
         return "text-[#61dafb] border-[#61dafb]/30 bg-[#61dafb]/5";
@@ -26,76 +27,16 @@ const getTechStyle = (tech) => {
     return "text-[var(--text-secondary)] border-[var(--border-bright)] bg-transparent";
 };
 
-const experiences = [
-    {
-        company: "WorldQuant BRAIN",
-        logo: "𝕎",
-        role: "Alpha Researcher (IQC 2026 Prep)",
-        type: "Self-Directed",
-        period: "2026 – Present",
-        location: "Remote",
-        responsibilities: [
-            "Studying alpha archetypes, key metrics including Sharpe ratio, fitness, and turnover for quantitative strategy development.",
-            "Exploring factor investing, order books, and EMH fundamentals from a beginner finance baseline.",
-            "Building and back-testing simulated alpha strategies for BRAIN platform submission.",
-        ],
-        tech: ["Python", "Alpha Research", "Quantitative Finance", "Statistics"],
-    },
-    {
-        company: "Academic Research",
-        logo: "📊",
-        role: "Data Analyst — Groundwater Study",
-        type: "Research",
-        period: "Jan 2026 – Present",
-        location: "Dhanbad, India",
-        responsibilities: [
-            "Consolidated multi-decade Excel datasets from CGWB tracking pre/post-monsoon water levels for Ranchi district, Jharkhand.",
-            "Building a Next.js web application with a scientific-editorial aesthetic to present findings academically.",
-            "Analyzing 30+ years of data to identify seasonal depletion patterns and long-term aquifer trends.",
-        ],
-        tech: ["Next.js", "Python", "Excel", "Data Visualization", "TypeScript"],
-    },
-    {
-        company: "Open Source / Projects",
-        logo: "⬡",
-        role: "Full Stack & Blockchain Developer",
-        type: "Personal",
-        period: "2024 – Present",
-        location: "Remote",
-        responsibilities: [
-            "Built DeVallet — Solana HD wallet with 'Dark Luxury' design system (near-black, warm gold, DM Serif Display + JetBrains Mono).",
-            "Built NexusChat — cyberpunk real-time chat with circuit grid background, glitch effects, and WebSocket architecture.",
-            "Built Kryptix — multi-chain HD wallet supporting Solana and Ethereum with BIP-44 derivation and localStorage persistence.",
-            "Built Penance of the Lost — Soulsborne browser game in a single HTML file using Phaser 3 with procedural asset generation.",
-        ],
-        tech: ["Next.js", "TypeScript", "Solana", "Phaser 3", "Tailwind", "WebSocket"],
-    },
-    {
-        company: "Competitive Programming",
-        logo: "⚡",
-        role: "Codeforces Contestant",
-        type: "Self-Directed",
-        period: "2024 – Present",
-        location: "Online",
-        responsibilities: [
-            "Active on Codeforces across problems involving sliding window, MSB-grouping, spanning tree constructions, and DP range queries.",
-            "Developed expertise in modular arithmetic, binary exponentiation, and single-pass solution design.",
-            "Uses concise C++ with void solve() structure and minimal branching for competitive submissions.",
-        ],
-        tech: ["C++", "Algorithms", "Data Structures", "Codeforces"],
-    },
-];
-
 export default function ExperienceSection() {
     return (
         <div className="relative min-h-screen font-display bg-[var(--bg)] text-[var(--text-primary)]">
             <VerticalGrid />
 
-            <main className="page-enter max-w-[860px] mx-auto pt-[80px] px-6 md:px-12 pb-[100px] relative z-[5]">
+            <main className="max-w-[860px] mx-auto pt-[80px] px-6 md:px-12 pb-[100px] relative z-[5]">
 
                 {/* Header Motifs */}
                 <p className="font-mono-custom text-[11px] text-[var(--text-dim)] tracking-[0.1em] mb-2">
-          // ACCESSING SYSTEM LOGS — CHRONOLOGICAL
+                    // ACCESSING SYSTEM LOGS — CHRONOLOGICAL
                 </p>
                 <h2 className="font-display text-[clamp(32px,5vw,48px)] font-bold tracking-[0.05em] uppercase text-[var(--text-primary)] leading-none mb-2.5">
                     Experience
@@ -115,7 +56,7 @@ export default function ExperienceSection() {
                 </div>
 
                 {/* Timeline */}
-                <div className="relative pl-2 md:pl-4 mt-8">
+                <div className="relative mt-8">
                     {/* Vertical Trace Line */}
                     <div className="absolute left-[15px] md:left-[23px] top-2 bottom-0 w-[1px] bg-[var(--border-bright)]" />
 
