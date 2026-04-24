@@ -3,9 +3,10 @@
 import React from "react";
 import StatusBar from "@/components/StatusBar";
 import VerticalGrid from "@/components/VerticalGrid";
+import { hacks } from "@/utils/data";
 
 // Helper function updated to match the darker, low-opacity theme of the terminal aesthetic
-const getTechStyle = (tech) => {
+const getTechStyle = (tech: string) => {
     const t = tech.toLowerCase();
     if (t.includes("react") || t.includes("next"))
         return "text-[#61dafb] border-[#61dafb]/30 bg-[#61dafb]/5";
@@ -26,69 +27,16 @@ const getTechStyle = (tech) => {
     return "text-[var(--text-secondary)] border-[var(--border-bright)] bg-transparent";
 };
 
-const hacks = [
-    {
-        placement: "1ST PLACE",
-        color: "#d4a017", // Swapped #facc15 for a "Terminal Amber" to fit the dark theme better
-        event: "SMART INDIA HACKATHON · 2024",
-        title: "Groundwater Analysis Platform",
-        description:
-            "Built a scientific web platform to visualize multi-decade groundwater trends for Ranchi district, Jharkhand. Consolidated CGWB data spanning 30+ years tracking pre/post-monsoon water table depths and seasonal aquifer depletion patterns. The platform presents findings in a scientific-editorial Next.js interface.",
-        tech: ["Next.js", "Python", "Excel", "Data Analysis", "TypeScript"],
-        github: "#",
-    },
-    {
-        placement: "1ST PLACE",
-        color: "#d4a017",
-        event: "BLOCKCHAIN OPEN BUILD · 2025",
-        title: "Kryptix — Multi-Chain HD Wallet",
-        description:
-            "Built Kryptix, an HD wallet supporting Solana and Ethereum with BIP-44 compliant key derivation, responsive Tailwind UI, and localStorage persistence. Included full transaction signing, account management flows, and address derivation for multiple coins from a single seed phrase.",
-        tech: ["TypeScript", "React", "Solana Web3.js", "Ethers.js", "Tailwind"],
-        github: "#",
-    },
-    {
-        placement: "BUILT",
-        color: "var(--text-dim)",
-        event: "48-HOUR SOLO GAME JAM · 2025",
-        title: "Penance of the Lost",
-        description:
-            "Soulsborne-style browser game built entirely in a single HTML file using Phaser 3. Procedurally generated assets, stamina-based combat with dodge rolls, AI enemy pathing, and a multi-phase boss fight. Zero external dependencies beyond Phaser. Ships as one file you can just double-click.",
-        tech: ["Phaser 3", "JavaScript", "HTML5 Canvas", "Procedural Gen"],
-        github: "#",
-    },
-    {
-        placement: "ONGOING",
-        color: "var(--green)",
-        event: "WORLDQUANT BRAIN IQC · 2026",
-        title: "Alpha Research Strategies",
-        description:
-            "Preparing quantitative alpha strategies for the IQC 2026 competition. Studying factor models, Sharpe ratio optimization, turnover constraints, and platform-specific simulation. Coming from a finance beginner baseline and working through foundational concepts in market microstructure.",
-        tech: ["Python", "Statistics", "Quant Finance", "BRAIN Platform"],
-        github: null,
-    },
-    {
-        placement: "BOUNTY",
-        color: "var(--text-dim)",
-        event: "SOLANA DEVNET BUILD · 2025",
-        title: "LST Liquid Staking Token",
-        description:
-            "Built a Liquid Staking Token project on Solana devnet. Resolved MintTo errors by correctly using Associated Token Accounts. Explored stake pool mechanics, epoch reward distribution, and LST mint/burn flows against devnet validators.",
-        tech: ["Rust", "Solana", "Anchor", "SPL Token", "TypeScript"],
-        github: "#",
-    },
-];
-
 export default function HacksSection() {
     return (
         <div className="relative min-h-screen font-display bg-[var(--bg)] text-[var(--text-primary)]">
             <VerticalGrid />
 
-            <main className="page-enter max-w-[1024px] mx-auto pt-[80px] px-6 md:px-12 pb-[100px] relative z-[5]">
+            <main className="max-w-[1024px] mx-auto pt-[80px] px-6 md:px-12 pb-[100px] relative z-[5]">
 
                 {/* Header Motifs */}
                 <p className="font-mono-custom text-[11px] text-[var(--text-dim)] tracking-[0.1em] mb-2">
-          // ACCESSING ARCHIVES — COMPETITIVE BUILDS
+                    // ACCESSING ARCHIVES — COMPETITIVE BUILDS
                 </p>
                 <h2 className="font-display text-[clamp(32px,5vw,48px)] font-bold tracking-[0.05em] uppercase text-[var(--text-primary)] leading-none mb-2.5">
                     Hackathons
@@ -113,7 +61,7 @@ export default function HacksSection() {
                         <div
                             key={i}
                             className="group relative bg-[var(--panel)] border border-[var(--border-bright)] p-6 md:p-8 transition-all duration-300 hover:bg-[#0c0c0c]"
-                            style={{ "--accent": h.color }}
+                            style={{ "--accent": h.color } as React.CSSProperties}
                         >
                             {/* Hover Dashed Bounding Box (Uses Accent Color) */}
                             <div
