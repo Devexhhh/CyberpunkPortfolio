@@ -78,10 +78,7 @@ const Home = () => {
         {/* Activity */}
         {/* Activity */}
         <SectionDivider title="Activity_Grid" number="02" className="mt-[52px]" />
-        <div className="overflow-x-auto pb-2 [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-[var(--panel)] [&::-webkit-scrollbar-thumb]:bg-[var(--border-bright)] hover:[&::-webkit-scrollbar-thumb]:bg-[var(--green)]">
-          <ContributionGrid total={3847} />
-        </div>
-
+        <ContributionGrid total={3847} />
         {/* Achievements */}
         <SectionDivider title="Notable_Achievements" number="03" className="mt-[52px]" />
         <AchievementsList />
