@@ -150,32 +150,16 @@
     animation: fadeUp 0.5s ease both;
   }
   
-  /* --- CUSTOM THEMED SCROLLBAR --- */
   .cyber-scroll {
-    /* For Firefox */
-    scrollbar-width: thin;
-    scrollbar-color: var(--border-bright) transparent;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
   
   .cyber-scroll::-webkit-scrollbar {
-    height: 4px; /* Controls horizontal scrollbar thickness */
-    width: 4px;  /* Controls vertical scrollbar thickness */
-  }
-
-  .cyber-scroll::-webkit-scrollbar-track {
-    background: var(--bg-card); /* Blends with the container */
-    border-radius: 2px;
-  }
-
-  .cyber-scroll::-webkit-scrollbar-thumb {
-    background: var(--border-bright); 
-    border-radius: 2px;
-  }
-
-  /* Changes to your red accent color when dragging/touching */
-  .cyber-scroll::-webkit-scrollbar-thumb:hover,
-  .cyber-scroll::-webkit-scrollbar-thumb:active {
-    background: var(--green); 
+    display: none !important; /* Chrome, Safari, WebKit */
+    width: 0 !important;
+    height: 0 !important;
+    -webkit-appearance: none !important;
   }
 }
 
