@@ -2,10 +2,11 @@
 
 import React from "react";
 import StatusBar from "@/components/StatusBar";
-import VerticalGrid from "@/components/VerticalGrid"; // Assuming you have this from the previous section
+import VerticalGrid from "@/components/VerticalGrid";
+import { projects } from "@/utils/data";
 
 // Helper function updated to match the darker, low-opacity theme of the terminal aesthetic
-const getTechStyle = (tech) => {
+const getTechStyle = (tech: string) => {
     const t = tech.toLowerCase();
     if (t.includes("react") || t.includes("next"))
         return "text-[#61dafb] border-[#61dafb]/30 bg-[#61dafb]/5";
@@ -28,83 +29,16 @@ const getTechStyle = (tech) => {
     return "text-[var(--text-secondary)] border-[var(--border-bright)] bg-transparent";
 };
 
-const projects = [
-    {
-        title: "KeyZen",
-        type: "Side Project · Web App",
-        status: "Active",
-        description: "A typing speed test built around the Keychron keyboard aesthetic with audio feedback on every keystroke. Tracks WPM, accuracy, and stats with a clean, minimal UI.",
-        tags: ["Next.js", "TypeScript", "Motion", "Recharts", "shadcn/ui"],
-        image: "/keyzen-screenshot.png",
-        glyph: "K",
-        gradientA: "#0a0a0a", gradientB: "#0a0a0a",
-    },
-    {
-        title: "DeVallet",
-        type: "Side Project · Web App",
-        status: "Active",
-        description: "Solana HD wallet with 'Dark Luxury' design — near-black base, warm gold accents, DM Serif Display + Sora + JetBrains Mono. Full BIP-44 key derivation, account management, and transaction signing.",
-        tags: ["Next.js", "Solana", "TypeScript", "Tailwind"],
-        glyph: "D",
-        gradientA: "#0d1a0d", gradientB: "#0a0a0a",
-    },
-    {
-        title: "NexusChat",
-        type: "Side Project · Web App",
-        status: "Active",
-        description: "Real-time cyberpunk-themed chat app with cyan/violet color language, animated circuit grid background, glitch text effects, and WebSocket-based messaging infrastructure.",
-        tags: ["React", "WebSocket", "Node.js", "CSS"],
-        glyph: "N",
-        gradientA: "#0a0d1a", gradientB: "#0a0a0a",
-    },
-    {
-        title: "Penance of the Lost",
-        type: "Game · Single HTML File",
-        status: "Complete",
-        description: "Soulsborne-style browser game built entirely in one HTML file using Phaser 3. Procedurally generated assets, stamina-based combat with dodge rolls, and a multi-phase boss fight.",
-        tags: ["Phaser 3", "JavaScript", "HTML", "Canvas"],
-        glyph: "P",
-        gradientA: "#1a0a0a", gradientB: "#0a0a0a",
-    },
-    {
-        title: "Groundwater Analysis",
-        type: "Research Project",
-        status: "Active",
-        description: "Multi-decade water level analysis for Ranchi district, Jharkhand — 30+ years of CGWB data. Pre/post-monsoon trend visualization in a scientific-editorial Next.js web application.",
-        tags: ["Next.js", "Python", "Excel", "Data Viz"],
-        glyph: "G",
-        gradientA: "#0a1218", gradientB: "#0a0a0a",
-    },
-    {
-        title: "Kryptix",
-        type: "Open Source · Web3",
-        status: "Active",
-        description: "Multi-chain HD wallet supporting Solana and Ethereum. BIP-44 compliant key derivation, responsive Tailwind UI, localStorage persistence, and full transaction signing.",
-        tags: ["TypeScript", "React", "Solana", "Ethereum"],
-        glyph: "K",
-        gradientA: "#150d1a", gradientB: "#0a0a0a",
-    },
-    {
-        title: "Ankar AI Clone",
-        type: "UI · Marketing",
-        status: "Complete",
-        description: "Next.js recreation of an AI marketing site with animated canvas-based prism light effect, precise corner bracket decorations in the hero, and smooth scroll-triggered reveals.",
-        tags: ["Next.js", "Canvas API", "TypeScript", "Framer Motion"],
-        glyph: "A",
-        gradientA: "#111118", gradientB: "#0a0a0a",
-    },
-];
-
 export default function ProjectsSection() {
     return (
         <div className="relative min-h-screen font-display bg-[var(--bg)] text-[var(--text-primary)]">
             <VerticalGrid />
 
-            <main className="page-enter max-w-[1024px] mx-auto pt-[80px] px-6 md:px-12 pb-[100px] relative z-[5]">
+            <main className="max-w-[1024px] mx-auto pt-[80px] px-6 md:px-12 pb-[100px] relative z-[5]">
 
                 {/* Header Motifs */}
                 <p className="font-mono-custom text-[11px] text-[var(--text-dim)] tracking-[0.1em] mb-2">
-          // ACCESSING ARCHIVES — DEPLOYED SCHEMATICS
+                    // ACCESSING ARCHIVES — DEPLOYED SCHEMATICS
                 </p>
                 <h2 className="font-display text-[clamp(32px,5vw,48px)] font-bold tracking-[0.05em] uppercase text-[var(--text-primary)] leading-none mb-2.5">
                     Projects
@@ -173,7 +107,7 @@ export default function ProjectsSection() {
 
                                 {/* Embedded Status Badge (Top Right of image) */}
                                 <div className="absolute top-3 right-3 z-30 flex items-center gap-1.5 bg-[var(--panel)]/90 backdrop-blur-sm border border-[var(--border-bright)] px-2 py-1">
-                                    <div className={`w-1.5 h-1.5 rounded-none ${p.status === 'Active' ? 'bg-[var(--green)] animate-pulse' : 'bg-[#666]'}`} />
+                                    <div className={`w-1.5 h-1.5 rounded-none ${p.status === 'Active' ? 'bg-[#57c457] animate-pulse' : 'bg-[#666]'}`} />
                                     <span className="font-mono-custom text-[8px] tracking-[0.1em] text-[var(--text-secondary)] uppercase">
                                         {p.status}
                                     </span>
