@@ -3,6 +3,7 @@
 import React from "react";
 import StatusBar from "@/components/StatusBar";
 import VerticalGrid from "@/components/VerticalGrid";
+import TechIcon from "@/utils/TechIcons";
 import { hacks } from "@/utils/data";
 
 // Helper function updated to match the darker, low-opacity theme of the terminal aesthetic
@@ -123,7 +124,8 @@ export default function HacksSection() {
                                             key={idx}
                                             className={`font-mono-custom text-[9px] uppercase tracking-[0.06em] px-2 py-1 border transition-all duration-200 flex items-center gap-1.5 rounded-none ${getTechStyle(t)} hover:brightness-125`}
                                         >
-                                            <span className="w-1 h-1 rounded-none bg-current opacity-70" />
+                                            {/* Injected SVG Icon here */}
+                                            <TechIcon name={t} />
                                             {t}
                                         </span>
                                     ))}
