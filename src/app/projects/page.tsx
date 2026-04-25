@@ -3,9 +3,10 @@
 import React from "react";
 import StatusBar from "@/components/StatusBar";
 import VerticalGrid from "@/components/VerticalGrid";
+import TechIcon from "@/utils/TechIcons";
 import { projects } from "@/utils/data";
 
-// Helper function updated to match the darker, low-opacity theme of the terminal aesthetic
+// Theme styling for the terminal aesthetic
 const getTechStyle = (tech: string) => {
     const t = tech.toLowerCase();
     if (t.includes("react") || t.includes("next"))
@@ -135,7 +136,8 @@ export default function ProjectsSection() {
                                             key={idx}
                                             className={`font-mono-custom text-[9px] uppercase tracking-[0.06em] px-2 py-1 border transition-all duration-200 flex items-center gap-1.5 rounded-none ${getTechStyle(t)} hover:brightness-125`}
                                         >
-                                            <span className="w-1 h-1 rounded-none bg-current opacity-70" />
+                                            {/* Simplified Component Call */}
+                                            <TechIcon name={t} />
                                             {t}
                                         </span>
                                     ))}
