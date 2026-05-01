@@ -12,7 +12,6 @@ export default function TechIcon({ name, className = "w-3 h-3 flex-shrink-0" }: 
                 <path stroke="currentColor" strokeWidth="5" d="M34.357 41c-12.97 22.6-16.436 45-7.921 50 8.514 5 25.94-9.3 38.812-32 12.97-22.6 16.534-45 8.02-50-8.615-5-26.04 9.3-38.912 32Z" />
             </svg>
         );
-
     if (t.includes("next"))
         return (
             <svg viewBox="0 0 100 100" fill="none" className={className}>
