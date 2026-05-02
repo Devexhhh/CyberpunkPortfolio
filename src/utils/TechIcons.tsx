@@ -37,7 +37,6 @@ export default function TechIcon({ name, className = "w-3 h-3 flex-shrink-0" }: 
                 <path fill="currentColor" d="M37.8 31.2 18 68.7H0l15.4-29.3c2.4-4.5 8.4-8.2 13.3-8.2zM82 40.6c0-5.2 4-9.4 9-9.4s9 4.2 9 9.4-4 9.4-9 9.4-9-4.2-9-9.4m-40.8-9.4h18L39.4 68.7h-18zm21.3 0h18L65.1 60.5c-2.4 4.5-8.4 8.2-13.3 8.2h-9l19.8-37.5z" />
             </svg>
         );
-
     if (t.includes("node"))
         return (
             <svg viewBox="0 0 100 100" fill="none" className={className}>
